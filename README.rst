@@ -1,3 +1,13 @@
+Build a wheel package for PreVeil vendored python environment
+=============================================================
+
+* `pip install --upgrade nox`
+* `nox -s prepare-release -- 20.1.901` (bump the current version at `./__ini__.py/__version__`, using 900+ patch avoiding conflict with pip versions)
+* `nox -s prepare-release -- 20.1.901`
+* push changes to upstream `PreVeil/pip` `preveil` branch
+* copy `dist/pip-20.1.901-py2.py3-none-any.whl` to desktop repository under `agnostic/virtualenv/virtualenv_support/`
+* push the updated wheel package desktop repository
+
 pip - The Python Package Installer
 ==================================
 

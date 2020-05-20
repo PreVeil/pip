@@ -54,6 +54,12 @@ logger = logging.getLogger(__name__)
 
 def normpath(src, p):
     # type: (str, str) -> str
+
+    # avoid resolving relative path from wheel house directory to target installation directory
+    # when target directory lives on a different drive than wheel house dir
+    if os.path.splitdrive(src)[0] != os.path.splitdrive(p)[0]:
+        return src.replace(os.path.sep, '/')
+    
     return os.path.relpath(src, p).replace(os.path.sep, '/')
 
 
